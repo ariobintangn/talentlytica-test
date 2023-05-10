@@ -1,72 +1,47 @@
+import ScoreRow from "./ScoreRow";
+
 export default function TableRow() {
   return (
     <>
       <tr>
         <td>Mahasiswa 1</td>
-        <td>
-          <select>
-            <option value="">-</option>
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-          </select>
-        </td>
-        <td>
-          <select>
-            <option value="">-</option>
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-          </select>
-        </td>
-        <td>
-          <select>
-            <option value="">-</option>
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-          </select>
-        </td>
-        <td>
-          <select>
-            <option value="">-</option>
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-          </select>
-        </td>
+        <ScoreRow/>
+      </tr>
+      <tr>
+        <td>Mahasiswa 2</td>
+        <ScoreRow/>
+      </tr>
+      <tr>
+        <td>Mahasiswa 3</td>
+        <ScoreRow/>
+      </tr>
+      <tr>
+        <td>Mahasiswa 4</td>
+        <ScoreRow/>
+      </tr>
+      <tr>
+        <td>Mahasiswa 5</td>
+        <ScoreRow/>
+      </tr>
+      <tr>
+        <td>Mahasiswa 6</td>
+        <ScoreRow/>
+      </tr>
+      <tr>
+        <td>Mahasiswa 7</td>
+        <ScoreRow/>
+      </tr>
+      <tr>
+        <td>Mahasiswa 8</td>
+        <ScoreRow/>
+      </tr>
+      <tr>
+        <td>Mahasiswa 9</td>
+        <ScoreRow/>
+      </tr>
+      <tr>
+        <td>Mahasiswa 10</td>
+        <ScoreRow/>
       </tr>
     </>
   );
