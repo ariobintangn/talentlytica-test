@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-
+import avatar from '../avatar.png'
 function ScoreTable() {
   const [scores, setScores] = useState({});
-  const [showResult, setShowResult] = useState(false)
+  const [showResult, setShowResult] = useState(false);
 
   const handleScoreChange = (event, indexStudent, indexCriteria) => {
-    setShowResult(false)
+    setShowResult(false);
     console.log(
       indexStudent,
       indexCriteria,
@@ -22,10 +22,9 @@ function ScoreTable() {
       ...scores,
       [`aspek_penilaian_${indexCriteria + 1}`]: {
         ...scores[`aspek_penilaian_${indexCriteria + 1}`],
-        [`mahasiswa_${indexStudent+1}`]: parseInt(event.target.value)
-      }
-    })
-    
+        [`mahasiswa_${indexStudent + 1}`]: parseInt(event.target.value),
+      },
+    });
   };
 
   useEffect(() => {
@@ -33,16 +32,16 @@ function ScoreTable() {
   }, [scores]);
 
   const handleSave = () => {
-    setShowResult(true)
+    setShowResult(true);
     console.log(scores);
   };
 
   return (
     <div>
-      <table style={{tableLayout:"auto", borderColor:"white", border:12}}>
+      <table style={{ tableLayout: "auto", borderColor: "white", border: "1px solid #000" }} id="customers">
         <thead>
           <tr>
-            <th>Nama Mahasiswa</th>
+            <th></th>
             <th>Aspek Penilaian 1</th>
             <th>Aspek Penilaian 2</th>
             <th>Aspek Penilaian 3</th>
@@ -55,7 +54,7 @@ function ScoreTable() {
             .map((el, indexStudent) => {
               return (
                 <tr>
-                  <td>{`Mahasiswa_${indexStudent + 1}`}</td>
+                  <td><img src={avatar} style={{width:"4vh", marginRight:"2vh", borderRadius:"100%"}}/>{`Mahasiswa_${indexStudent + 1}`}</td>
                   {Array(4)
                     .fill(1)
                     .map((el, indexCriteria) => {
@@ -69,8 +68,10 @@ function ScoreTable() {
                                 indexCriteria
                               )
                             }
-                          >
-                            <option value="0" selected disabled>-</option>
+                           style={{minWidth:"12vh"}}>
+                            <option value="0" selected disabled>
+                              -
+                            </option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -90,12 +91,17 @@ function ScoreTable() {
             })}
         </tbody>
       </table>
-      <button onClick={handleSave} style={{backgroundColor:"black", color:"white"}}>SIMPAN</button>
+      <div style={{marginLeft:"100vh", marginTop: "5vh"}}>
 
-    
-      {showResult && <div>
-        {JSON.stringify(scores, null, 2)}
-      </div>}
+      <button
+        onClick={handleSave}
+        style={{ backgroundColor: "black", color: "white", width: "20vh", height: "6vh" }}
+        >
+        Simpan
+      </button>
+        </div>
+
+      {showResult && <div>{JSON.stringify(scores, null, 2)}</div>}
     </div>
   );
 }
