@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import avatar from '../avatar.png'
+import React, { useEffect, useState, useRef } from "react";
+import avatar from "../avatar.png";
 function ScoreTable() {
   const [scores, setScores] = useState({});
   const [showResult, setShowResult] = useState(false);
@@ -34,11 +34,24 @@ function ScoreTable() {
   const handleSave = () => {
     setShowResult(true);
     console.log(scores);
+    // const element = document.getElementById(1)
+    // element.scrollIntoView({ behavior: "smooth" });
   };
+
+  const closeResult = () => {
+    setShowResult(false)
+  }
 
   return (
     <div>
-      <table style={{ tableLayout: "auto", borderColor: "white", border: "1px solid #000" }} id="customers">
+      <table
+        style={{
+          tableLayout: "auto",
+          borderColor: "white",
+          border: "1px solid #000",
+        }}
+        id="customers"
+      >
         <thead>
           <tr>
             <th></th>
@@ -54,7 +67,17 @@ function ScoreTable() {
             .map((el, indexStudent) => {
               return (
                 <tr>
-                  <td><img src={avatar} style={{width:"4vh", marginRight:"2vh", borderRadius:"100%"}}/>{`Mahasiswa_${indexStudent + 1}`}</td>
+                  <td>
+                    <img
+                      src={avatar}
+                      style={{
+                        width: "4vh",
+                        marginRight: "2vh",
+                        borderRadius: "100%",
+                      }}
+                    />
+                    {`Mahasiswa_${indexStudent + 1}`}
+                  </td>
                   {Array(4)
                     .fill(1)
                     .map((el, indexCriteria) => {
@@ -68,7 +91,8 @@ function ScoreTable() {
                                 indexCriteria
                               )
                             }
-                           style={{minWidth:"12vh"}}>
+                            style={{ minWidth: "12vh" }}
+                          >
                             <option value="0" selected disabled>
                               -
                             </option>
@@ -91,17 +115,30 @@ function ScoreTable() {
             })}
         </tbody>
       </table>
-      <div style={{marginLeft:"100vh", marginTop: "5vh"}}>
-
-      <button
-        onClick={handleSave}
-        style={{ backgroundColor: "black", color: "white", width: "20vh", height: "6vh" }}
+      <div style={{ marginLeft: "100vh", marginTop: "5vh" }}>
+        <button
+          onClick={handleSave}
+          style={{
+            backgroundColor: "black",
+            color: "white",
+            width: "20vh",
+            height: "6vh",
+          }}
         >
-        Simpan
-      </button>
+          Simpan
+        </button>
+      </div>
+      {showResult && (
+        <>
+        <div id={1} style={{ minHeight: "100vh", position:"absolute", top:'0', right:'15%', left:'15%', backgroundColor:"grey" }}>
+          <h1>Hasil</h1>
+          <div style={{paddingTop:"15%"}}>
+          {JSON.stringify(scores, null, 2)}
+          </div>
+          <button style={{backgroundColor:"red", color:"white"}} onClick={closeResult}>X</button>
         </div>
-
-      {showResult && <div>{JSON.stringify(scores, null, 2)}</div>}
+        </>
+      )}
     </div>
   );
 }
